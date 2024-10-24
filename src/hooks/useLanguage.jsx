@@ -19,19 +19,9 @@ export const useLanguage = () => {
     setError,
   } = useContext(LanguageContext);
 
-  useEffect(() => {
-    if (sourceText) {
-      const delay = setTimeout(() => {
-        handleTranslate();
-      }, 300);
-
-      return () => clearTimeout(delay);
-    }
-  }, [sourceText, targetLang, sourceLang]);
-
   const handleTranslate = async () => {
     setIsLoading(true);
-    setError('');
+    setError("");
     try {
       const response = await axios.get(
         `https://api.mymemory.translated.net/get?q=${sourceText}&langpair=${sourceLang}|${targetLang}`
@@ -47,6 +37,16 @@ export const useLanguage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (sourceText) {
+      const delay = setTimeout(() => {
+        handleTranslate();
+      }, 500);
+
+      return () => clearTimeout(delay);
+    }
+  }, [sourceText, targetLang, sourceLang]);
 
   const swapTranslate = () => {
     setSourceLang(targetLang);

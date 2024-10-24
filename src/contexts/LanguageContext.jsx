@@ -19,7 +19,7 @@ export const LanguageProvider = ({ children }) => {
     { code: "it", name: "Italiano" },
     { code: "pt", name: "Português" },
   ];
-
+  
   return (
     <LanguageContext.Provider
       value={{
