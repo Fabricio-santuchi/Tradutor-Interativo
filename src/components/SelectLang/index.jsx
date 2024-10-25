@@ -9,7 +9,7 @@ const SelectLang = ({ valor, mundanca }) => {
     <select
       value={valor}
       onChange={mundanca}
-      className="text-sm text-textColor bg-transparent border-none focus:outline-none cursor-pointer"
+      className="text-sm font-semibold text-textColor bg-transparent border-none focus:outline-none cursor-pointer"
     >
       {languages.map((lang) => (
         <option key={lang.code} value={lang.code}>
