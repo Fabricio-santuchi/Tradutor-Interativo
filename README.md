@@ -77,15 +77,15 @@ TRADUTOR-INTERATIVO/
 │
 ├── src/                   # Diretório principal de código-fonte
 │   ├── components/        # Componentes React do projeto
-│   │   ├── ChangeButton/
-│   │   ├── ContainerLanguageSelector
-│   │   ├── Footer
-│   │   ├── HeaderApp
-│   │   ├── Loader
-│   │   ├── MsgError
-│   │   ├── MsgTraduzida
-│   │   ├── SelectLang
-│   │   └── TextSource
+│   │   ├── ChangeButton/  # Componentes React do projeto
+│   │   ├── ContainerLanguageSelector/ # Componentes React do projeto
+│   │   ├── Footer/        # Componentes React do projeto
+│   │   ├── HeaderApp/     # Componentes React do projeto
+│   │   ├── Loader/        # Componentes React do projeto
+│   │   ├── MsgError/      # Componentes React do projeto
+│   │   ├── MsgTraduzida/  # Componentes React do projeto
+│   │   ├── SelectLang/    # Componentes React do projeto
+│   │   └── TextSource/    # Componentes React do projeto
 │   ├── contexts/          # Contextos da aplicação
 │   │   └── LanguageContext.jsx
 │   ├── hooks/             # Hooks personalizados
