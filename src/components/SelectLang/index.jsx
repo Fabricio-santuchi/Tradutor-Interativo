@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useLanguage } from "../../hooks/useLanguage";
+import { useContext } from "react";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const SelectLang = ({ valor, mundanca }) => {
-  const { languages } = useLanguage();
+  const { languages } = useContext(LanguageContext);
 
   return (
     <select

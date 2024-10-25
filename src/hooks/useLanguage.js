@@ -1,31 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext, useCallback } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import axios from "axios";
 
 export const useLanguage = () => {
   const {
     sourceLang,
-    setSourceLang,
     targetLang,
-    setTargetLang,
     sourceText,
     setSourceText,
-    languages,
-    isLoading,
-    setIsLoading,
-    translatedText,
     setTranslatedText,
-    error,
+    setIsLoading,
     setError,
+    setSourceLang,
+    setTargetLang,
+    translatedText,
   } = useContext(LanguageContext);
 
-  const handleTranslate = async () => {
+  const handleTranslate = useCallback(async () => {
+    if (!sourceText.trim()) return setTranslatedText("");
+
     setIsLoading(true);
     setError("");
     try {
       const response = await axios.get(
         `https://api.mymemory.translated.net/get?q=${sourceText}&langpair=${sourceLang}|${targetLang}`
       );
+
       if (response.data && response.data.responseData) {
         setTranslatedText(response.data.responseData.translatedText);
       } else {
@@ -36,17 +36,14 @@ export const useLanguage = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  useEffect(() => {
-    if (sourceText.trim()) {  // Apenas dispara se houver texto para traduzir
-    const delay = setTimeout(() => {
-      handleTranslate();
-    }, 500);
-
-      return () => clearTimeout(delay);
-    }
-  }, [sourceText, targetLang, sourceLang]);
+  }, [
+    sourceText,
+    sourceLang,
+    targetLang,
+    setIsLoading,
+    setError,
+    setTranslatedText,
+  ]);
 
   const swapTranslate = () => {
     setSourceLang(targetLang);
@@ -56,16 +53,7 @@ export const useLanguage = () => {
   };
 
   return {
-    sourceLang,
-    setSourceLang,
-    targetLang,
-    setTargetLang,
-    sourceText,
-    setSourceText,
-    languages,
-    isLoading,
-    translatedText,
-    error,
+    handleTranslate,
     swapTranslate,
   };
 };

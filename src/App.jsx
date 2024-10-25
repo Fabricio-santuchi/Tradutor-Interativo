@@ -3,10 +3,22 @@ import ContainerLanguageSelector from "./components/ContainerLanguageSelector";
 import TranslationContainer from "./components/TranslationContainer";
 import Footer from "./components/Footer";
 import MsgError from "./components/MsgError";
+import { useContext, useEffect } from "react";
+import { LanguageContext } from "./contexts/LanguageContext";
 import { useLanguage } from "./hooks/useLanguage";
 
 function App() {
-  const { error } = useLanguage();
+  const { error, sourceText, targetLang, sourceLang } =
+    useContext(LanguageContext);
+  const { handleTranslate } = useLanguage();
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      handleTranslate();
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [sourceText, targetLang, sourceLang]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

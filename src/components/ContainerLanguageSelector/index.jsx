@@ -1,10 +1,11 @@
-import { useLanguage } from "../../hooks/useLanguage";
+import { useContext } from "react";
 import ChangeButton from "../ChangeButton";
 import SelectLang from "../SelectLang";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const ContainerLanguageSelector = () => {
   const { sourceLang, setSourceLang, targetLang, setTargetLang } =
-    useLanguage();
+    useContext(LanguageContext);
 
   return (
     <div className="flex items-center justify-between p-4 border-b border-gray-200">

@@ -1,7 +1,8 @@
-import { useLanguage } from "../../hooks/useLanguage";
+import { useContext } from "react";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const TextSource = () => {
-  const { sourceText, setSourceText } = useLanguage();
+  const { sourceText, setSourceText } = useContext(LanguageContext);
 
   return (
     <textarea
