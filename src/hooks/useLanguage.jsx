@@ -39,10 +39,10 @@ export const useLanguage = () => {
   };
 
   useEffect(() => {
-    if (sourceText) {
-      const delay = setTimeout(() => {
-        handleTranslate();
-      }, 500);
+    if (sourceText.trim()) {  // Apenas dispara se houver texto para traduzir
+    const delay = setTimeout(() => {
+      handleTranslate();
+    }, 500);
 
       return () => clearTimeout(delay);
     }

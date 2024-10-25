@@ -2,11 +2,12 @@
 import { createContext, useState } from "react";
 
 export const LanguageContext = createContext();
+LanguageContext.displayName = "language";
 
-export const LanguageProvider = ({ children }) => {
+const LanguageProvider = ({ children }) => {
   const [sourceLang, setSourceLang] = useState("pt");
   const [targetLang, setTargetLang] = useState("en");
-  const [sourceText, setSourceText] = useState('');
+  const [sourceText, setSourceText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [translatedText, setTranslatedText] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +20,7 @@ export const LanguageProvider = ({ children }) => {
     { code: "it", name: "Italiano" },
     { code: "pt", name: "Português" },
   ];
-  
+
   return (
     <LanguageContext.Provider
       value={{
@@ -42,3 +43,5 @@ export const LanguageProvider = ({ children }) => {
     </LanguageContext.Provider>
   );
 };
+
+export default LanguageProvider;
